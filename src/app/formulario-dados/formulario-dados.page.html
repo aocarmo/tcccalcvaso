@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="secondary" text="" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-img src="../assets/logo3.png"></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Número de identificação (TAG)</ion-label>
+      <ion-input maxlength="20" formControlName="tag" type="text"></ion-input>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.tag.errors?.required">
+      O campo TAG é obrigatório.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.tag.errors?.minlength">
+      Min 3 caracteres.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.tag.errors?.maxlength">
+      Max 20 caracteres.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Diâmetro interno (mm)</ion-label>
+      <ion-input formControlName="diametro" type="text"></ion-input>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.diametro.errors?.required">
+      O campo diâmetro é obrigatório.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.diametro.errors?.pattern">
+      Somente números permitidos para diamentro.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.diametro.errors?.min">
+      O valor deve ser maior ou igual a 150.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Espessura mínima do casco</ion-label>
+      <ion-input formControlName="espmincasco" type="text"></ion-input>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmincasco.errors?.required">
+      O campo diâmetro é obrigatório.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmincasco.errors?.pattern">
+      Somente números permitidos para diamentro.
+    </span>
+  
+    <ion-item lines="full">
+      <ion-label position="floating">Espessura mínima do tampo 1</ion-label>
+      <ion-input formControlName="espmintampo1" type="text"></ion-input>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmintampo1.errors?.required">
+      Este campo é obrigatório.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmintampo1.errors?.pattern">
+      Somente números permitidos para este campo.
+    </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Espessura mínima do tampo 2</ion-label>
+      <ion-input formControlName="espmintampo2" type="text"></ion-input>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmintampo2.errors?.required">
+      Este campo é obrigatório.
+    </span>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmintampo2.errors?.pattern">
+      Somente números permitidos para este campo.
+    </span>
+
+    <!--
+
+      <ion-item lines="full">
+        <ion-label position="floating">DOB</ion-label>
+        <ion-datetime (ionChange)="fetchDate($event)" formControlName="dob" [value]="defaultDate"></ion-datetime>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input maxlength="10" formControlName="phone" type="text" required></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.required">
+        Phone number is required.
+      </span>
+      <span class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.pattern">
+        Number values allowed.
+      </span>
+
+    -->
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
