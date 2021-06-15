@@ -73,6 +73,32 @@
       Somente números permitidos para este campo.
     </span>
 
+    <ion-item>
+      <ion-label>Material</ion-label>
+      <ion-select [(ngModel)]="material" okText="Selecionar"  formControlName="material" cancelText="Cancelar">
+        <ion-select-option value="108.0">A-285-C</ion-select-option>
+        <ion-select-option value="117.8">A-515-60 </ion-select-option>
+        <ion-select-option value="137.7">A-516-70</ion-select-option>
+        <ion-select-option value="118.0">A-387-11 cl 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.material.errors?.required">
+      Este campo é obrigatório.
+    </span>
+
+    <ion-item>
+      <ion-label position="floating">Coeficiente de eficiência da solda</ion-label>
+      <ion-select [(ngModel)]="eficiencia" okText="Selecionar"  formControlName="solda"  cancelText="Cancelar">
+        <ion-select-option value="1.00">1,00</ion-select-option>        
+        <ion-select-option value="0.85">0,85</ion-select-option>
+        <ion-select-option value="0.7">0,7</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span class="advise error ion-padding" *ngIf="submitted && errorCtr.solda.errors?.required">
+      Este campo é obrigatório.
+    </span>
+
+
     <!--
 
       <ion-item lines="full">
@@ -96,7 +122,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+        <ion-button type="submit" color="light" expand="block">Confirmar</ion-button>
       </ion-col>
     </ion-row>
   </form>

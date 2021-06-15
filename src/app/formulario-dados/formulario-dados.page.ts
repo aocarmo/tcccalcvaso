@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from "@angular/forms";
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-formulario-dados',
   templateUrl: './formulario-dados.page.html',
@@ -9,7 +10,7 @@ export class FormularioDadosPage implements OnInit {
   myForm: FormGroup;
   submitted = false;
 
-  constructor(public formBuilder: FormBuilder) { 
+  constructor(public formBuilder: FormBuilder, private navCtrl: NavController) { 
 
  
   }
@@ -22,6 +23,8 @@ export class FormularioDadosPage implements OnInit {
       espmincasco: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       espmintampo1: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       espmintampo2: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      material: ['', [Validators.required]],
+      solda: ['', [Validators.required]],
       /*dob: [],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]*/
     })
@@ -57,11 +60,13 @@ export class FormularioDadosPage implements OnInit {
 
     this.submitted = true;
     if (!this.myForm.valid) {
-      console.log('All fields are required.')
+        alert("Verifique as informações inseridas.");
       return false;
-    } else {
+    } else {    
      
-      console.log(this.myForm.value.diametro)
+      this.navCtrl.navigateForward('confirme',  { state: this.myForm.value });    
+    
+      //console.log(this.myForm.value.diametro)
     }
   }
 
