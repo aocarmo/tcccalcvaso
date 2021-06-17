@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calculo',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculoPage implements OnInit {
 
-  constructor() { }
+  dados: any;
+  constructor( public router: Router) { 
+    if (router.getCurrentNavigation().extras.state) {
+      this.dados = this.router.getCurrentNavigation().extras.state;
+      console.log(this.dados);
+    }
+  }
 
   ngOnInit() {
   }

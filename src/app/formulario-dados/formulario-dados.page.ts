@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from "@angular/forms";
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-formulario-dados',
   templateUrl: './formulario-dados.page.html',
@@ -10,7 +10,7 @@ export class FormularioDadosPage implements OnInit {
   myForm: FormGroup;
   submitted = false;
 
-  constructor(public formBuilder: FormBuilder, private navCtrl: NavController) { 
+  constructor(public formBuilder: FormBuilder, private navCtrl: NavController , public alertController: AlertController) { 
 
  
   }
@@ -47,27 +47,45 @@ export class FormularioDadosPage implements OnInit {
     let espessuraLimite = this.myForm.value.diametro / 20;
 
     if(this.myForm.value.espmincasco >= espessuraLimite){
-      alert("A espessura do casco deve ser 20 vezes menor que o diametro");
+      this.presentAlert("A espessura do casco deve ser 20 vezes menor que o diametro");      
+      return false;
     }
     
     if(this.myForm.value.espmintampo1 >= espessuraLimite){
-      alert("A espessura do minima do tampo 1 deve ser 20 vezes menor que o diametro");
+    
+      this.presentAlert("A espessura do minima do tampo 1 deve ser 20 vezes menor que o diametro");
+      return false;
     }
 
     if(this.myForm.value.espmintampo2 >= espessuraLimite){
-      alert("A espessura do minima do tampo 2 deve ser 20 vezes menor que o diametro");
+      this.presentAlert("A espessura do minima do tampo 2 deve ser 20 vezes menor que o diametro");
+      return false;
     }
 
     this.submitted = true;
     if (!this.myForm.valid) {
-        alert("Verifique as informações inseridas.");
+      this.presentAlert("Verifique as informações inseridas.");
       return false;
     } else {    
      
-      this.navCtrl.navigateForward('confirme',  { state: this.myForm.value });    
-    
-      //console.log(this.myForm.value.diametro)
+      this.navCtrl.navigateForward('confirme',  { state: this.myForm.value });        
+      
     }
+  }
+
+  async presentAlert(texto) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Atenção',
+      subHeader: 'Dados de entrada inválidos',
+      message: texto,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 
 }

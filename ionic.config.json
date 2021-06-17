@@ -2,9 +2,7 @@
   "name": "Vaso",
   "integrations": {
     "capacitor": {},
-    "cordova": {
-      "enabled": false
-    }
+    "cordova": {}
   },
   "type": "angular"
 }
