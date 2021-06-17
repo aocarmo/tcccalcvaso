@@ -97,10 +97,11 @@ export class ConfirmePage implements OnInit {
     let dadosCalculados = {
       pmtaCasco: this.pmtaCasco,
       pmtaTampo1: this.pmtaTampo1,
-      pmtaTampo2: this.pmtaTampo2
+      pmtaTampo2: this.pmtaTampo2,
+      dadosBrutos: this.dados
     }
-    this.navCtrl.navigateForward('calculo');
-    this.navCtrl.navigateForward('calculo',  { state: dadosCalculados });    
+    
+    this.navCtrl.navigateForward('calculo',  { state: dadosCalculados  });    
   }
 
   calcularCasco(){

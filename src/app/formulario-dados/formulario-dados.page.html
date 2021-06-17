@@ -41,7 +41,7 @@
     </span>
 
     <ion-item lines="full">
-      <ion-label position="floating">Espessura mínima do casco</ion-label>
+      <ion-label position="floating" class="ion-text-wrap">Espessura mínima do casco (mm)</ion-label>
       <ion-input formControlName="espmincasco" type="text"></ion-input>
     </ion-item>
     <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmincasco.errors?.required">
@@ -52,7 +52,7 @@
     </span>
   
     <ion-item lines="full">
-      <ion-label position="floating">Espessura mínima do tampo 1</ion-label>
+      <ion-label position="floating" class="ion-text-wrap">Espessura mínima do tampo 1 (mm)</ion-label>
       <ion-input formControlName="espmintampo1" type="text"></ion-input>
     </ion-item>
     <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmintampo1.errors?.required">
@@ -63,7 +63,7 @@
     </span>
 
     <ion-item lines="full">
-      <ion-label position="floating">Espessura mínima do tampo 2</ion-label>
+      <ion-label position="floating" class="ion-text-wrap">Espessura mínima do tampo 2 (mm)</ion-label>
       <ion-input formControlName="espmintampo2" type="text"></ion-input>
     </ion-item>
     <span class="advise error ion-padding" *ngIf="submitted && errorCtr.espmintampo2.errors?.required">
@@ -87,7 +87,7 @@
     </span>
 
     <ion-item>
-      <ion-label position="floating">Coeficiente de eficiência da solda</ion-label>
+      <ion-label position="floating" class="ion-text-wrap"> Coeficiente de eficiência da solda</ion-label>
       <ion-select [(ngModel)]="eficiencia" okText="Selecionar"  formControlName="solda"  cancelText="Cancelar">
         <ion-select-option value="1.00">1,00</ion-select-option>        
         <ion-select-option value="0.85">0,85</ion-select-option>
@@ -97,28 +97,6 @@
     <span class="advise error ion-padding" *ngIf="submitted && errorCtr.solda.errors?.required">
       Este campo é obrigatório.
     </span>
-
-
-    <!--
-
-      <ion-item lines="full">
-        <ion-label position="floating">DOB</ion-label>
-        <ion-datetime (ionChange)="fetchDate($event)" formControlName="dob" [value]="defaultDate"></ion-datetime>
-      </ion-item>
-  
-      <ion-item lines="full">
-        <ion-label position="floating">Phone</ion-label>
-        <ion-input maxlength="10" formControlName="phone" type="text" required></ion-input>
-      </ion-item>
-      <span class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.required">
-        Phone number is required.
-      </span>
-      <span class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.pattern">
-        Number values allowed.
-      </span>
-
-    -->
-
 
     <ion-row>
       <ion-col>
